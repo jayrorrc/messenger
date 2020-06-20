@@ -17,6 +17,7 @@ Models:
     - User:
         - Name;
         - Conversations;
+        - Passoword;
     - Conversation:
         - Messages;
         - Users;
