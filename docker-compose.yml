@@ -1,0 +1,38 @@
+version: "3.2"
+
+services:
+  mongo:
+    container_name: db
+    image: mongo:latest
+    working_dir: /opt/DB_Files
+    networks:
+      - messenger-network
+    ports:
+      - "27017:27017"
+    volumes:
+      - type: "bind"
+        source: ./config/mongod.conf
+        target: /etc/mongod.conf
+      - type: volume
+        source: db
+        target: /data/db
+  api:
+    container_name: api
+    image: api:latest
+    build:
+      context: .
+      dockerfile: ./dockerfiles/dk-api.Dockerfile
+    networks:
+      - messenger-network
+    ports:
+      - "81:8080"
+      - "9229:9229"
+    volumes:
+      - type: bind
+        source: ./api
+        target: /opt/api
+networks:
+  messenger-network:
+    driver: bridge
+volumes:
+  db:
