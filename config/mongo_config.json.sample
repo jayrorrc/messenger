@@ -1,0 +1,5 @@
+{
+    "url": "mongo",
+    "port": 27017,
+    "database": "messenger"
+}
