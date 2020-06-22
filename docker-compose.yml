@@ -30,6 +30,9 @@ services:
       - type: "bind"
         source: ./config/mongo_config.json
         target: /opt/api/mongo_config.json
+      - type: "bind"
+        source: ./config/auth_config.json
+        target: /opt/api/auth_config.json
       - type: bind
         source: ./api
         target: /opt/api

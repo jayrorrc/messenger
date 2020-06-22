@@ -9,7 +9,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger('dev'));
-
 app.use('/api', require('./database/routes/main'));
 
 const mongoConfig = require('./mongo_config.json');
