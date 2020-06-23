@@ -68,7 +68,7 @@ function loginUser(req, res) {
                     const token = Token(existingUser);
                     return res.status(200).json({
                         message: 'User authorization successful',
-                        existingUser: {
+                        user: {
                             username: existingUser.username,
                             _id: existingUser.id,
                         },
