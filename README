@@ -1,5 +1,5 @@
 Features:
-    - Login;
+    - Login; OK
     - Messages between users
     - Message as commands:
         - Pattern: \stock=stock_code
@@ -24,3 +24,15 @@ Models:
         - Users;
     - Message:
         - Text;
+
+To start aplication:
+
+Dependencies:
+    - Docker version 19.03.8
+    - docker-compose version 1.25.5
+
+On folder config:
+    - Remove .sample from the files
+
+On root folder run:
+    - docker-compose up
