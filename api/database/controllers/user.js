@@ -55,8 +55,6 @@ function createUser(req, res, next) {
 function loginUser(req, res) {
     const { username, password } = req.body;
 
-    console.log('username', username);
-
     User.findOne({ username: username })
         .then((existingUser) => {
             bcrypt.compare(password, existingUser.password, (err, result) => {
@@ -86,7 +84,17 @@ function loginUser(req, res) {
         });
 }
 
+async function getUsers(req, res) {
+
+    let users = await User
+        .find({ '_id': { '$ne': req.query.id } })
+        .select('active username _id');
+
+    return res.status(200).json({ users });
+}
+
 module.exports = {
     createUser,
-    loginUser
+    loginUser,
+    getUsers
 };

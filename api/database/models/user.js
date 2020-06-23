@@ -16,6 +16,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
+    active: {
+        type: Boolean,
+        default: false
+    },
     conversations: [{
         type: Schema.Types.ObjectId,
         ref: 'Conversation'
