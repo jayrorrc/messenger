@@ -64,6 +64,8 @@ export default {
             return {};
           });
         this.$store.commit("setAuth", auth);
+
+        console.log("[1]", this.$store.getters.getAuth);
       }
     }
   }

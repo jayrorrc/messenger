@@ -36,8 +36,9 @@ function createUser(req, res, next) {
                         const token = Token(newUser);
                         res.status(201).json({
                             message: 'User signup successfully',
-                            User: {
-                                username: newUser.username
+                            user: {
+                                username: newUser.username,
+                                _id: newUser.id
                             },
                             token,
                         });

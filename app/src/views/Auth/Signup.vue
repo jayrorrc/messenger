@@ -50,8 +50,7 @@ export default {
       const { username, password } = this;
 
       if (username && password) {
-        await Auth.signup(username, password);
-        let auth = await Auth.login(username, password)
+        let auth = await Auth.signup(username, password)
           .then(function(response) {
             let auth = {};
             auth.user = response.data.user;
@@ -65,6 +64,9 @@ export default {
             return {};
           });
         this.$store.commit("setAuth", auth);
+
+        console.log("[0]", this.$store.getters.getAuth);
+
         this.$router.push("/");
       }
     }
