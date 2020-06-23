@@ -27,6 +27,13 @@ export const store = new Vuex.Store({
         getUsers: (state) => {
             return state.users;
         },
+        getActiveUserID: (state) => {
+            let user = state.users.filter((user) => {
+                return user.active;
+            }).pop();
+
+            return user ? user._id : null;
+        }
     },
     mutations: {
         setAuth(state, auth) {
