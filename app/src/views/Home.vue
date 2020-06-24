@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="$store.getters.isAuthorized" class="login">
+    <div v-if="$store.getters.isAuthorized">
       <Dashboard />
     </div>
     <div v-else class="dashboard">

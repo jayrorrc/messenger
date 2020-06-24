@@ -3,18 +3,18 @@
     <div class="column is-one-quarter">
       <UserList />
     </div>
-    <div class="column">
-      <h1>Conversation</h1>
-    </div>
+    <Conversation />
   </div>
 </template>
 <script>
 import UserList from "../components/user/UserList";
+import Conversation from "../components/conversation/Conversation";
 
 export default {
   name: "Dashboard",
   components: {
-    UserList
+    UserList,
+    Conversation
   }
 };
 </script>

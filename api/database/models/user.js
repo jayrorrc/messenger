@@ -19,11 +19,7 @@ const userSchema = new Schema({
     active: {
         type: Boolean,
         default: false
-    },
-    conversations: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Conversation'
-    }]
+    }
 }, { timestamps: true });
 
 module.exports = mongoose.model('User', userSchema);;

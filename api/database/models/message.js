@@ -9,9 +9,10 @@ const messageSchema = new Schema({
         type: String,
         required: true,
     },
-    conversation: {
+    from: {
         type: Schema.Types.ObjectId,
-        ref: 'Conversation',
+        ref: 'User',
+        required: true
     }
 }, { timestamps: true });
 

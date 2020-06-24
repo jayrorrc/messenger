@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     state: {
         auth: {},
-        users: []
+        users: [],
+        messages: []
     },
     getters: {
         getAuth: (state) => {
@@ -27,6 +28,16 @@ export const store = new Vuex.Store({
         getUsers: (state) => {
             return state.users;
         },
+        getActiveUserID: (state) => {
+            let user = state.users.filter((user) => {
+                return user.active;
+            }).pop();
+
+            return user ? user._id : null;
+        },
+        getMessages: (state) => {
+            return state.messages;
+        }
     },
     mutations: {
         setAuth(state, auth) {
@@ -45,6 +56,9 @@ export const store = new Vuex.Store({
 
                 return user;
             });
+        },
+        setMessages(state, messages) {
+            state.messages = messages;
         }
     }
 });
