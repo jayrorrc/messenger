@@ -1,6 +1,30 @@
 const mongoose = require('mongoose');
 const Message = require('../models/message');
 const Conversation = require('../models/conversation');
+const User = require('../models/user');
+const message = require('../routes/message');
+
+
+async function _getMessages(messageIDs) {
+
+    let messages = await Message.find({ _id: { '$in': messageIDs } })
+        .populate('from')
+        .sort({ 'createdAt': -1 })
+        .limit(50);
+
+    messages = messages.map((message) => {
+
+        let msg = {
+            text: message.text,
+            from: message.from.username,
+            createdAt: message.createdAt
+        }
+
+        return msg;
+    }).reverse();
+
+    return messages;
+}
 
 // create new message
 async function sendMessage(req, res, next) {
@@ -25,11 +49,26 @@ async function sendMessage(req, res, next) {
         conversation.messages.push(message);
     }
 
-    conversation = await conversation.save();
+    await conversation.save();
 
-    return res.status(200).json({ conversation });
+    messages = await _getMessages(conversation.messages);
+
+    return res.status(200).json({ messages });
+}
+
+async function getMessages(req, res, next) {
+    let users = [req.query.from, req.query.to];
+    let messages = [];
+    let conversation = await Conversation.findOne({ users });
+
+    if (conversation) {
+        messages = await _getMessages(conversation.messages);
+    }
+
+    return res.status(200).json({ messages });
 }
 
 module.exports = {
-    sendMessage
+    sendMessage,
+    getMessages
 };

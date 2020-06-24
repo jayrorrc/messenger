@@ -64,9 +64,6 @@ export default {
             return {};
           });
         this.$store.commit("setAuth", auth);
-
-        console.log("[0]", this.$store.getters.getAuth);
-
         this.$router.push("/");
       }
     }

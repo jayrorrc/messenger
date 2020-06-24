@@ -42,7 +42,7 @@ export default {
 
       let conversations = await MessageController.sendMessage(token, data);
 
-      console.log("conversations:", conversations);
+      this.$store.commit("setMessages", conversations.messages);
     }
   }
 };

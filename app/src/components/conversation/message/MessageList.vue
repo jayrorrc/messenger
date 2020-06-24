@@ -1,18 +1,23 @@
 <template>
   <div class="box">
-    <span>MessageList</span>
+    <div v-for="message in $store.getters.getMessages" :key="message.id" class="columns">
+      <Message :message="message" />
+    </div>
   </div>
 </template>
 <script>
+import Message from "./Message";
+
 export default {
   name: "MessageList",
-  methods: {
-    getConversation() {}
+  components: {
+    Message
   }
 };
 </script>
 <style scoped>
 .box {
   height: 80%;
+  overflow: scroll;
 }
 </style>

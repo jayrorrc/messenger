@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="userlist">
     <div v-for="user in $store.getters.getUsers" :key="user.id" class="columns">
       <User :user="user" />
     </div>
@@ -25,4 +25,8 @@ export default {
 };
 </script>
 <style scoped>
+.userlist {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 </style>
