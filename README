@@ -1,6 +1,6 @@
 Features:
     - Login; OK
-    - Messages between users
+    - Messages between users OK
     - Message as commands:
         - Pattern: \stock=stock_code
     - Bot:
@@ -16,14 +16,14 @@ Features:
 
 Models:
     - User:
-        - Name;
-        - Conversations;
-        - Passoword;
+        - username;
+        - passoword;
     - Conversation:
         - Messages;
-        - Users;
+        - users;
     - Message:
-        - Text;
+        - text;
+        - from;
 
 To start aplication:
 
@@ -36,3 +36,6 @@ On folder config:
 
 On root folder run:
     - docker-compose up
+
+The app will start on localhost:8080
+and api on localhost:8081
